@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/app_localizations.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/profile-settings/profile-settings-screen.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/profile-settings/framework_category_selection_screen.dart';
 
 
 class SelectProfileTypeCard extends StatelessWidget {
@@ -31,7 +31,7 @@ class SelectProfileTypeCard extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(ProfileSettingsScreen.routeName);
+              Navigator.of(context).pushNamed(FrameworkCategorySelectionScreen.routeName);
             },
           ),
         );

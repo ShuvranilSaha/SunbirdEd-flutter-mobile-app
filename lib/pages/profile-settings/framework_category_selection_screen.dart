@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
 
-class ProfileSettingsScreen extends StatefulWidget {
+class FrameworkCategorySelectionScreen extends StatefulWidget {
   static const routeName = "/profile-settings";
   @override
-  _ProfileSettingsScreenState createState() => _ProfileSettingsScreenState();
+  _FrameworkCategorySelectionScreenState createState() => _FrameworkCategorySelectionScreenState();
 }
 
-class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
+class _FrameworkCategorySelectionScreenState extends State<FrameworkCategorySelectionScreen> {
   ScrollController bodyScrollController = new ScrollController();
   double verticalScrollOffset = 0.0;
 
