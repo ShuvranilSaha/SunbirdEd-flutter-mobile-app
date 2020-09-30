@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/main.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/user-type-selection/user-type-selection.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/user_type_selection.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_box.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_button.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
