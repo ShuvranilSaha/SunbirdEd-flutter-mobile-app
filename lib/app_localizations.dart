@@ -16,7 +16,6 @@ List<LocaleDetail> appLocales = [
   LocaleDetail('English', Locale('en', '')),
   LocaleDetail('অসমীয়া', Locale('as', '')),
   LocaleDetail('বাংলা', Locale('bn', '')),
-  LocaleDetail('বাংলা', Locale('bn', '')),
   LocaleDetail('ગુજરાતી', Locale('gu', '')),
   LocaleDetail('ಕನ್ನಡ', Locale('kn', '')),
   LocaleDetail('मराठी', Locale('mr', '')),

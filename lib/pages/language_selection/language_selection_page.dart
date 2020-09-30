@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/main.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user-type-selection/user-type-selection.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_box.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_button.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
@@ -7,6 +8,7 @@ import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.da
 import '../../app_localizations.dart';
 
 class LanguageSelectionPage extends StatefulWidget {
+  static const String routeName = "/language-settings-page";
   LanguageSelectionPage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -90,7 +92,11 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                           .toUpperCase(),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                        UserTypeSelectionPage.routeName,
+                        arguments: selectedLocale);
+                  },
                 ),
               ),
             ),
@@ -106,7 +112,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
         crossAxisCount: 2,
         childAspectRatio: 1.5,
       ),
-      delegate: SliverChildBuilderDelegate((BuildContext, index) {
+      delegate: SliverChildBuilderDelegate((context, index) {
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: GestureDetector(

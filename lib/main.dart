@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import './routes.dart';
 
 import 'app_localizations.dart';
 import 'pages/language_selection/language_selection_page.dart';
@@ -66,6 +67,7 @@ class _SunbirdAppState extends State<SunbirdApp> {
         return supportedLocales.first;
       },
       home: LanguageSelectionPage(title: 'Flutter Demo Home Page'),
+      routes: routes,
     );
   }
 }
