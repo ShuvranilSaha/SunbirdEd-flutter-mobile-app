@@ -18,30 +18,53 @@ class LanguageSelectionPage extends StatefulWidget {
 class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
   LocaleDetail selectedLocale;
 
+  ScrollController bodyScrollController = new ScrollController();
+  double verticalScrollOffset = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          TopBar(70),
-          CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: SafeArea(
-                  child: SizedBox(),
+      body: NotificationListener<ScrollNotification>(
+        child: Stack(
+          children: [
+            CustomScrollView(
+              slivers: [
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: DynamicTopBar(
+                      minExtentHeight: 0.0, maxExtentHeight: (200.0 - verticalScrollOffset).clamp(0.0, double.infinity)),
+                )
+              ],
+            ),
+            CustomScrollView(
+              controller: bodyScrollController,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: SafeArea(
+                    child: SizedBox(
+                      height: 32.0,
+                    ),
+                  ),
                 ),
-              ),
-              _buildHeader(context),
-              _buildLanguagesGrid(context),
-              SliverToBoxAdapter(
-                child: SafeArea(
-                  child: SizedBox(),
+                _buildHeader(context),
+                _buildLanguagesGrid(context),
+                SliverToBoxAdapter(
+                  child: SafeArea(
+                    child: SizedBox(
+                      height: 32.0 + 16.0,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          _buildContinueButton(context),
-        ],
+              ],
+            ),
+            _buildContinueButton(context),
+          ],
+        ),
+        onNotification: (ScrollNotification scrollInfo) {
+          setState(() {
+            verticalScrollOffset = bodyScrollController.offset;
+          });
+        },
       ),
     );
   }
@@ -50,7 +73,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
     return Positioned(
       left: 0,
       right: 0,
-      bottom: 0,
+      bottom: 16,
       child: SafeArea(
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -97,12 +120,12 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                 child: Text(
                   appLocales[index].label,
                   style: Theme.of(context).textTheme.headline6.copyWith(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16,
-                    color: selectedLocale == appLocales[index]
-                        ? Colors.white
-                        : Theme.of(context).textTheme.bodyText1.color,
-                  ),
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
+                        color: selectedLocale == appLocales[index]
+                            ? Colors.white
+                            : Theme.of(context).textTheme.bodyText1.color,
+                      ),
                 ),
               ),
               color: selectedLocale == appLocales[index]
