@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widets/build_header.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widets/select_profile_type_card.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widgets/build_header.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widgets/select_profile_type_card.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
 
 class UserTypeSelectionPage extends StatefulWidget {

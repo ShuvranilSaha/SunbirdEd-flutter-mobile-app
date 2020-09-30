@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/app_localizations.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/profile-settings/framework_category_selection_screen.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/framework_category_selection_screen/framework_category_selection_screen.dart';
 
 
 class SelectProfileTypeCard extends StatelessWidget {
