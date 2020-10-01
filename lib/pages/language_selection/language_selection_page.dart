@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/main.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/language_selection/widgets/header.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/user_type_selection.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_box.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/radial_button.dart';
+import 'package:sunbird_ed_flutter_mobile_app/presentation/components/custom_elevation.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
 
 import '../../app_localizations.dart';
 
 class LanguageSelectionPage extends StatefulWidget {
   static const String routeName = "/language-settings-page";
+
   LanguageSelectionPage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -34,7 +35,9 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: DynamicTopBar(
-                      minExtentHeight: 0.0, maxExtentHeight: (200.0 - verticalScrollOffset).clamp(0.0, double.infinity)),
+                      minExtentHeight: 0.0,
+                      maxExtentHeight: (200.0 - verticalScrollOffset)
+                          .clamp(0.0, double.infinity)),
                 )
               ],
             ),
@@ -44,11 +47,11 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                 SliverToBoxAdapter(
                   child: SafeArea(
                     child: SizedBox(
-                      height: 32.0,
+                      height: 16.0,
                     ),
                   ),
                 ),
-                _buildHeader(context),
+                Header(context),
                 _buildLanguagesGrid(context),
                 SliverToBoxAdapter(
                   child: SafeArea(
@@ -83,20 +86,26 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: RadialButton(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      AppLocalizations.of(context)
-                          .translate('CONTINUE')
-                          .toUpperCase(),
+                child: CustomElevation(
+                  radius: 30,
+                  color: Theme.of(context).accentColor,
+                  child: FlatButton(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        AppLocalizations.of(context)
+                            .translate('CONTINUE')
+                            .toUpperCase(),
+                        style: Theme.of(context).textTheme.button.copyWith(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
                     ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(
+                          UserTypeSelectionPage.routeName,
+                          arguments: selectedLocale);
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(
-                        UserTypeSelectionPage.routeName,
-                        arguments: selectedLocale);
-                  },
                 ),
               ),
             ),
@@ -107,65 +116,46 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
   }
 
   Widget _buildLanguagesGrid(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.5,
-      ),
-      delegate: SliverChildBuilderDelegate((context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GestureDetector(
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          mainAxisSpacing: 16.0,
+          crossAxisSpacing: 24.0,
+        ),
+        delegate: SliverChildBuilderDelegate((context, index) {
+          return GestureDetector(
             onTap: () {
               selectedLocale = appLocales[index];
 
               SunbirdApp.setLocale(context, appLocales[index].locale);
             },
-            child: RadialBox(
-              child: Center(
-                child: Text(
-                  appLocales[index].label,
-                  style: Theme.of(context).textTheme.headline6.copyWith(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16,
-                        color: selectedLocale == appLocales[index]
-                            ? Colors.white
-                            : Theme.of(context).textTheme.bodyText1.color,
-                      ),
-                ),
-              ),
+            child: CustomElevation(
+              radius: 20,
               color: selectedLocale == appLocales[index]
                   ? Theme.of(context).accentColor
                   : Colors.white,
+              child: Container(
+                child: Center(
+                  child: Text(
+                    appLocales[index].label,
+                    style: Theme.of(context).textTheme.headline6.copyWith(
+                          fontSize: 16,
+                          color: selectedLocale == appLocales[index]
+                              ? Colors.white
+                              : Theme.of(context).textTheme.bodyText1.color,
+                          fontWeight: selectedLocale == appLocales[index]
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                        ),
+                  ),
+                ),
+              ),
             ),
-          ),
-        );
-      }, childCount: appLocales.length),
-    );
-  }
-
-  Widget _buildHeader(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          Text(
-            AppLocalizations.of(context).translate("APP_TITLE", arg: "Diksha"),
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(color: Theme.of(context).accentColor),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            AppLocalizations.of(context).translate("CHOOSE_LANGUAGE"),
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-        ],
+          );
+        }, childCount: appLocales.length),
       ),
     );
   }

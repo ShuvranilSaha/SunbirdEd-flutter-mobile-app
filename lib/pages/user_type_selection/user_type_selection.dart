@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widgets/build_header.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widgets/header.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/widgets/select_profile_type_card.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
 
@@ -19,6 +19,9 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        shadowColor: Colors.transparent,
+      ),
       body: Stack(
         children: [
          CustomScrollView(
@@ -40,7 +43,7 @@ class _UserTypeSelectionPageState extends State<UserTypeSelectionPage> {
                   child: SizedBox(),
                 ),
               ),
-              BuildHeader(context),
+              Header(context),
               SelectProfileTypeCard(context, profileType),
             ],
           )
