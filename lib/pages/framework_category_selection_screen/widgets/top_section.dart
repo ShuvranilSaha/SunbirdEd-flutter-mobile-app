@@ -54,7 +54,7 @@ class TopSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: FlareActor(
           "assets/flare/qr_scan.flr",
-          animation: "Animation",
+          animation: "Animations",
         ),
       ),
     );
