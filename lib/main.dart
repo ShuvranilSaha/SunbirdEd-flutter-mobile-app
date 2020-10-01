@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import './routes.dart';
 
+import './routes.dart';
 import 'app_localizations.dart';
-import 'pages/language_selection/language_selection_page.dart';
+import 'pages/language_selection_screen/language_selection_page.dart';
 
 void main() {
   runApp(SunbirdApp());
@@ -66,7 +66,7 @@ class _SunbirdAppState extends State<SunbirdApp> {
         // from the list (English, in this case).
         return supportedLocales.first;
       },
-      home: LanguageSelectionPage(title: 'Flutter Demo Home Page'),
+      home: LanguageSelectionScreen(title: 'Flutter Demo Home Page'),
       routes: routes,
     );
   }

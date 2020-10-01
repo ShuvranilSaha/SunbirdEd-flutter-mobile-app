@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/main.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/language_selection/widgets/header.dart';
-import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection/user_type_selection.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/language_selection_screen/widgets/header.dart';
+import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection_screen/user_type_selection.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/custom_elevation.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
 
 import '../../app_localizations.dart';
 
-class LanguageSelectionPage extends StatefulWidget {
+class LanguageSelectionScreen extends StatefulWidget {
   static const String routeName = "/language-settings-page";
 
-  LanguageSelectionPage({Key key, this.title}) : super(key: key);
+  LanguageSelectionScreen({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _LanguageSelectionPageState createState() => _LanguageSelectionPageState();
+  _LanguageSelectionScreenState createState() =>
+      _LanguageSelectionScreenState();
 }
 
-class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
+class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   LocaleDetail selectedLocale;
 
   ScrollController bodyScrollController = new ScrollController();
@@ -102,7 +103,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
                     ),
                     onPressed: () {
                       Navigator.of(context).pushNamed(
-                          UserTypeSelectionPage.routeName,
+                          UserTypeSelectionScreen.routeName,
                           arguments: selectedLocale);
                     },
                   ),
