@@ -3,7 +3,7 @@ import 'package:sunbird_ed_flutter_mobile_app/main.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/language_selection_screen/widgets/header.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection_screen/user_type_selection.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/custom_elevation.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
+import 'package:sunbird_ed_flutter_mobile_app/presentation/components/layouts/top_bar.dart';
 
 import '../../app_localizations.dart';
 

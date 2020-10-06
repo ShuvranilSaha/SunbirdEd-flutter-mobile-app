@@ -2,7 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:sunbird_ed_flutter_mobile_app/app_localizations.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
+import 'package:sunbird_ed_flutter_mobile_app/presentation/components/layouts/top_bar.dart';
 
 class QrScannerScreen extends StatefulWidget {
   static const routeName = "/qr-scanner";
@@ -51,6 +51,13 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                 child: QRView(
                   key: qrKey,
                   onQRViewCreated: _onQRViewCreated,
+                  overlay: QrScannerOverlayShape(
+                    borderColor: Colors.white,
+                    borderRadius: 10,
+                    borderLength: 30,
+                    borderWidth: 10,
+                    cutOutSize: 300
+                  ),
                 ),
               ),
             ),
@@ -97,7 +104,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             ),
             Positioned(
               top: 0,
-              left: 0,
+              right: 50,
               child: SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -106,7 +113,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(AppLocalizations.of(context)
-                          .translate("SCAN_QR_CODE")),
+                          .translate("SCAN_QR_CODE"),),
                       Text(AppLocalizations.of(context)
                           .translate("SCAN_QR_INSTRUCTION")),
                     ],

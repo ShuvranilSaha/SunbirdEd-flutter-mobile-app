@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/framework_category_selection_screen/widgets/top_section.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
+import 'package:sunbird_ed_flutter_mobile_app/presentation/components/layouts/top_bar.dart';
 
 import 'widgets/bottom_section.dart';
 import 'widgets/top_section.dart';

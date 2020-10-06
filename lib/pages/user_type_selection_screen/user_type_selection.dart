@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection_screen/widgets/header.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/user_type_selection_screen/widgets/select_profile_type_grid.dart';
-import 'package:sunbird_ed_flutter_mobile_app/presentation/components/top_bar.dart';
+import 'package:sunbird_ed_flutter_mobile_app/presentation/components/layouts/top_bar.dart';
 
 class ProfileTypeData {
   String label;

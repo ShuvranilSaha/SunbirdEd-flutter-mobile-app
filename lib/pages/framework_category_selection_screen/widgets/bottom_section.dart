@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunbird_ed_flutter_mobile_app/modals/framework_category_selection_modal/framework_category_selection_modal.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/custom_elevation.dart';
 
 import '../../../app_localizations.dart';
@@ -136,7 +137,14 @@ class BottomSection extends StatelessWidget {
                             .button
                             .copyWith(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  FrameworkCategorySelectionModal()),
+                        );
+                      },
                     ),
                   ),
                 ),
