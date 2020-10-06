@@ -51,6 +51,13 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                 child: QRView(
                   key: qrKey,
                   onQRViewCreated: _onQRViewCreated,
+                  overlay: QrScannerOverlayShape(
+                    borderColor: Colors.white,
+                    borderRadius: 10,
+                    borderLength: 30,
+                    borderWidth: 10,
+                    cutOutSize: 300
+                  ),
                 ),
               ),
             ),
@@ -97,7 +104,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             ),
             Positioned(
               top: 0,
-              left: 0,
+              right: 50,
               child: SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -106,7 +113,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(AppLocalizations.of(context)
-                          .translate("SCAN_QR_CODE")),
+                          .translate("SCAN_QR_CODE"),),
                       Text(AppLocalizations.of(context)
                           .translate("SCAN_QR_INSTRUCTION")),
                     ],
