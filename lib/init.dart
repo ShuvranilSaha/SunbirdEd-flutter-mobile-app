@@ -4,6 +4,8 @@ import 'package:sunbird_flutter_client_services/core.dart';
 class _BuildConfig {
   static const BASE_URL =
       const String.fromEnvironment("base_url", defaultValue: "");
+  static const BEARER =
+      const String.fromEnvironment("BEARER", defaultValue: "");
 }
 
 init(BuildContext context) async {
@@ -13,7 +15,7 @@ init(BuildContext context) async {
           api: CsCoreApiConfig(
             host: _BuildConfig.BASE_URL,
             authentication: CsCoreApiAuthenticationConfig(
-              bearerToken: String.fromEnvironment("BEARER", defaultValue: ""),
+              bearerToken: _BuildConfig.BEARER,
             ),
           ),
           global: CsCoreGlobalConfig()),
