@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:sunbird_ed_flutter_mobile_app/app_localizations.dart';
@@ -92,11 +91,8 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                         .height * (1 / 3),
                     child: Container(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      child: FlareActor(
-                        "assets/flare/qr_scan.flr",
-                        animation: "Animations",
-                      ),
+                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: Image.asset("assets/images/qr_with_book.png"),
                     ),
                   ),
                 ),

@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:sunbird_ed_flutter_mobile_app/pages/qr_scanner_screen/qr_scanner_screen.dart';
 import 'package:sunbird_ed_flutter_mobile_app/presentation/components/custom_elevation.dart';
@@ -12,7 +11,7 @@ class TopSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildFlareAnimation(context),
+          _buildQrImage(context),
           _buildTextBody(context),
           SizedBox(
             height: 16,
@@ -47,15 +46,12 @@ class TopSection extends StatelessWidget {
     );
   }
 
-  Widget _buildFlareAnimation(BuildContext context) {
+  Widget _buildQrImage(BuildContext context) {
     return Expanded(
       flex: 1,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: FlareActor(
-          "assets/flare/qr_scan.flr",
-          animation: "Animations",
-        ),
+        child: Image.asset("assets/images/qr_with_book.png"),
       ),
     );
   }

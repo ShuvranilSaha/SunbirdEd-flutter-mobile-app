@@ -24,7 +24,6 @@ dependencies:
   flutter_bloc: ^6.0.6
   sunbird_flutter_client_services:
     path: ../sunbird_flutter_client_services
-  flare_flutter: ^1.8.3
   flutter:
     sdk: flutter
   flutter_localizations:
