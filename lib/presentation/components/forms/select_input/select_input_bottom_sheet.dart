@@ -36,7 +36,10 @@ class _SelectInputBottomSheetState extends State<SelectInputBottomSheet> {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFF2F2EA),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
       ),
       child: SafeArea(
         child: Column(
