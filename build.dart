@@ -17,26 +17,25 @@ void main(List<String> args) async {
   if (env == null || !["staging", "prod", "dev"].contains(env)) {
     print("Invalid args missing -env");
     exit(0);
-    return;
   }
 
-  await File("pubspec_${env}.yaml").copy("pubspec.yaml");
+  await File("pubspec_$env.yaml").copy("pubspec.yaml");
 
-  final List<List<String>> env_variables = [];
+  final List<List<String>> envVariables = [];
 
-  await File("config/${env}/env/properties.env")
+  await File("config/$env/env/properties.env")
       .openRead()
       .map(utf8.decode)
       .transform(new LineSplitter())
-      .forEach((l) => env_variables.add(l.split("=")));
+      .forEach((l) => envVariables.add(l.split("=")));
 
-  final env_variables_string = env_variables.fold("", (acc, List<String> env) {
+  final envVariablesString = envVariables.fold("", (acc, List<String> env) {
     return acc + " --dart-define=${env.first}=${env.last}";
   });
 
   var shell = Shell();
 
-  await shell.run("flutter build $platform $env_variables_string");
+  await shell.run("flutter build $platform $envVariablesString");
 
   exit(0);
 }

@@ -17,17 +17,17 @@ void main(List<String> args) async {
     exit(0);
   }
 
-  await File("pubspec_${env}.yaml").copy("pubspec.yaml");
+  await File("pubspec_$env.yaml").copy("pubspec.yaml");
 
-  final List<List<String>> env_variables = [];
+  final List<List<String>> envVariables = [];
 
-  await File("config/${env}/.env")
+  await File("config/$env/.env")
       .openRead()
       .map(utf8.decode)
       .transform(new LineSplitter())
-      .forEach((l) => env_variables.add(l.split("=")));
+      .forEach((l) => envVariables.add(l.split("=")));
 
-  final envVariablesString = env_variables.fold("", (acc, List<String> env) {
+  final envVariablesString = envVariables.fold("", (acc, List<String> env) {
     return acc + " --dart-define=${env.first}=${env.last}";
   });
 

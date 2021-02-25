@@ -17,8 +17,11 @@ class CategoryConfig {
   final String code;
   final bool multiSelect;
 
-  CategoryConfig(
-      {@required this.display, @required this.code, @required this.multiSelect});
+  CategoryConfig({
+    @required this.display,
+    @required this.code,
+    @required this.multiSelect,
+  });
 }
 
 class FrameworkCategorySelectionFormBloc extends Bloc<FCSEvent, FCSState> {
@@ -34,11 +37,13 @@ class FrameworkCategorySelectionFormBloc extends Bloc<FCSEvent, FCSState> {
   CsFrameworkService _frameworkService = CsModule().frameworkService;
 
   @override
-  Stream<FCSState> mapEventToState(FCSEvent event,) async* {
+  Stream<FCSState> mapEventToState(
+    FCSEvent event,
+  ) async* {
     if (event is FCSInitEvent) {
       var channel = await _frameworkService.getChannel(channelId);
       var suggestedFrameworks =
-      await _frameworkService.getChannelSuggestedFrameworkList(channel);
+          await _frameworkService.getChannelSuggestedFrameworkList(channel);
 
       yield FCSSuggestedFrameworksLoadedState.fromSuggestedFramework(
         prevState: state,
@@ -56,7 +61,7 @@ class FrameworkCategorySelectionFormBloc extends Bloc<FCSEvent, FCSState> {
             .getFramework(event.selectedOptions.first.value);
 
         final frameworkCategoryTerms =
-        await _frameworkService.getFrameworkCategoryTerms(
+            await _frameworkService.getFrameworkCategoryTerms(
           _frameworkCache,
           categories[event.categoryIndex].code,
         );
@@ -76,8 +81,9 @@ class FrameworkCategorySelectionFormBloc extends Bloc<FCSEvent, FCSState> {
         final categoryTerms = await _frameworkService.getFrameworkCategoryTerms(
           _frameworkCache,
           categories[event.categoryIndex + 1].code,
-          event.categoryIndex == 0 ? null : categories[event.categoryIndex]
-              .code,
+          event.categoryIndex == 0
+              ? null
+              : categories[event.categoryIndex].code,
           event.selectedOptions.map((o) => o.value as String).toList(),
         );
 
